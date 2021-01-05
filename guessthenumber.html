@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess number</title>
+</head>
+<body>
+		<h1>Guess the number</h1>
+		<input type="number" id="number">
+		<button onclick="guessNumber()" id="guessbtn">Guess a number</button>
+		<button onclick="restartPressed" hidden="true" id="restartbtn">Restart</button>
+		<p id="message"></p>
+
+
+<script type="text/javascript">
+	var randomNumber = Math.ceil(Math.random()*100);
+	var chances = 5 ;
+
+	    //a new number will generated 
+		//user will have 5 chances
+		//the guess button will be activated
+		// the restart button hidden
+	function restartPressed(){
+		randomNumber = Math.ceil(Math.random()*100);
+
+		chances = 5
+
+		document.getElementById("guessbtn").removeAttribute("disabled")
+		document.getElementById("restartbtn").setAttribute("hidden",true)
+		document.getElementById("message").innerHTML = ""
+	}
+
+    function guessNumber(){
+    	var userGuess = document.getElementById("number").value
+    	 if (userGuess > randomNumber){
+            chances--
+            if (chances > 0){
+    	 	document.getElementById("message").innerHTML = "Number too high!"
+    	 }
+    	 else {
+    	 	document.getElementById("message").innerHTML = "Number too high,Sorry you lose.The number is "+
+    	 	randomNumber
+    	 	document.getElementById("guessbtn").setAttribute("disabled",true)
+    	 	document.getElementById("restartbtn").removeAttribute("hidden")
+    	 }
+    	}
+    	 else if(userGuess<randomNumber){
+    	 	chances--
+    	 	if (chances > 0){
+    	 	document.getElementById("message").innerHTML = "Number too low!! Try again!!"
+    	 }
+    	 else {
+    	 	document.getElementById("message").innerHTML = "Number too low,Sorry you lose.The number is "+
+    	 	randomNumber
+    	 	document.getElementById("guessbtn").setAttribute("disabled",true)
+    	 	document.getElementById("restartbtn").removeAttribute("hidden")
+    	 }
+    	}
+    	 else {
+    	 	document.getElementById("message").innerHTML = "Congratulation!! You win!!"
+    	 	document.getElementById("guessbtn").setAttribute("disabled",true)
+    	 	document.getElementById("restartbtn").removeAttribute("hidden")
+    	 }
+    	 document.getElementById("number").value = ""
+    }
+</script>
+</body>
+</html>
