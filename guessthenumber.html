@@ -7,28 +7,24 @@
 		<h1>Guess the number</h1>
 		<input type="number" id="number">
 		<button onclick="guessNumber()" id="guessbtn">Guess a number</button>
-		<button onclick="restartPressed" hidden="true" id="restartbtn">Restart</button>
+		<button onclick="restartPressed()" hidden="true" id="restartbtn">Restart</button>
 		<p id="message"></p>
-
-
 <script type="text/javascript">
 	var randomNumber = Math.ceil(Math.random()*100);
 	var chances = 5 ;
-
-	    //a new number will generated 
-		//user will have 5 chances
-		//the guess button will be activated
-		// the restart button hidden
+	    			
 	function restartPressed(){
+        //a new number will generated 
 		randomNumber = Math.ceil(Math.random()*100);
-
+        //user will have 5 chances
 		chances = 5
-
+        //the guess button will be activated
 		document.getElementById("guessbtn").removeAttribute("disabled")
+        // the restart button hidden
 		document.getElementById("restartbtn").setAttribute("hidden",true)
-		document.getElementById("message").innerHTML = ""
-	}
-
+        //clear the message ide
+        document.getElementById("message").innerHTML="";
+			}
     function guessNumber(){
     	var userGuess = document.getElementById("number").value
     	 if (userGuess > randomNumber){
@@ -61,7 +57,7 @@
     	 	document.getElementById("restartbtn").removeAttribute("hidden")
     	 }
     	 document.getElementById("number").value = ""
-    }
+       }
 </script>
 </body>
 </html>
